@@ -17,7 +17,8 @@
 				</div>
 
 				<div class="card-body">
-                        <a href="{{route('transaksi.print')}}" class="btn btn-primary float-left mb-4 mr-2"><i class="fa fa-print"></i> Cetak Data</a>                    <table class="table" id="table-transaksi">
+                     <a href="{{route('transaksi.print')}}" class="btn btn-primary float-left mb-4 mr-2"><i class="fa fa-print"></i> Cetak Data</a>                   
+                    <table class="table" id="table-transaksi"> 
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -27,6 +28,9 @@
                                 <th>Status Bayar</th>
                             </tr>
                         </thead>
+                        <tbody>
+
+                        </tbody>
                     </table>
                 </div>
 

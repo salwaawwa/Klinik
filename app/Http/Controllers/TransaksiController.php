@@ -54,7 +54,7 @@ class TransaksiController extends Controller
 
         // Deskripsi ID
         $produk = Produk::findOrFail($request->produk_id);
-        $tanggal = Carbon::now();
+        $tanggal = Carbon::now()->isoFormat('D MMMM Y');;
 
         if($produk->stok === 0)
         {
@@ -134,21 +134,21 @@ class TransaksiController extends Controller
        
         $user = user::where('id', Auth::user()->id)->first();
         $pesanan = Pesanan::where('user_id',Auth::user()->id)->where('status',0)->first();
-
+        
         if($pesanan){
 
             $pesanan_id = $pesanan->id;
+            $pesanan->bayar = $request->uang_bayar;
+
+            if($request->uang_bayar === NULL){
+               return redirect()->route('transaksi.create')->with('primary','Silahkan Masukan Uang Bayar');
+            }elseif($request->uang_bayar < $pesanan->total_harga){
+                return redirect()->route('transaksi.create')->with('primary','Uang Bayar Kurang');
+            }
+
+            $pesanan->kembalian = $request->uang_bayar - $pesanan->total_harga;
             $pesanan->status = 1;
             $pesanan->update();
-            // $pesanan->bayar = $request->uang_bayar;
-
-            //     if($request->uang_bayar === NULL){
-            //        return redirect()->route('transaksi.create')->with('primary','Silahkan Masukan Uang Bayar');
-            //     }elseif($request->uang_bayar < $pesanan->total_harga){
-            //         return redirect()->route('transaksi.create')->with('primary','Uang Bayar Kurang');
-            //     }
-
-            
 
             $pesanan_details = PesananDetail::where('pesanan_id',$pesanan_id)->get();
             foreach($pesanan_details as $pesanan_detail)
@@ -164,7 +164,7 @@ class TransaksiController extends Controller
                     ]);
             }
 
-            return view('dashboard.transaksi.confirm',compact('pesanan','pesanan_details'));
+            return view('dashboard.transaksi.confirm',compact('pesanan','pesanan_details','kembalian'));
 
         }else{
             return redirect()->route('transaksi.create')->with('primary','Belum ada Pesanan');

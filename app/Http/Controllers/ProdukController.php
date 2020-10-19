@@ -56,7 +56,7 @@ class ProdukController extends Controller
     public function update(Request $request, $slug){
     	$produk = Produk::whereSlug($slug)->first();
         if($produk){
-            $slug = Str::of($request->nama_produk)->slug('-');
+            $slug = Str::of($request->nama_tindakan)->slug('-');
             $request->merge(['slug'=>$slug]);
             $produk->update($request->all());
             return redirect()->route('produk.index');
@@ -98,7 +98,7 @@ class ProdukController extends Controller
                         ->addIndexColumn()
                         ->editColumn('nama_tindakan', function($item) {
                             $nama = $item->nama_tindakan.'<br>';
-                            $edit = '<a href="'. route('produk.edit', $item->slug).'">Edit</a> ';
+                            $edit = '<a href="'. route('produk.edit', $item->slug) .'">Edit</a> ';
                             $delete = '<a href="javascript:void(0)" onclick="myConfirm('.$item->id.')">Delete</a> ';
                             return $nama.$edit.$delete;
                         })

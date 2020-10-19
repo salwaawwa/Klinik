@@ -20,6 +20,7 @@ class CreatePesanansTable extends Migration
             $table->string('tanggal');
             $table->string('total_harga');
             $table->string('bayar')->nullable();
+            $table->string('kembalian')->nullable();
             $table->string('status');
             $table->timestamps();
         });

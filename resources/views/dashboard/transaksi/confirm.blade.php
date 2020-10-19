@@ -14,7 +14,8 @@
 
 	                  	<div class="row">
 	                  		<div class="col-md-6">
-
+			                    <h5>KLINIK SPESIALIS UROLOGI</h5>
+			                    <h6>dr. Ginanda Putra Siregar, SpU</h6>
 	                  		</div>
 
 	                  		<div class="col-md-6">
@@ -64,6 +65,14 @@
 			                          @else
 			                          	<td> </td>
 			                          @endif
+			                      </tr>
+			                      <tr>
+			                      	<td colspan="4" align="right"><strong>Bayar : </strong> </td>
+			                        <td aign="left"> {{ Awa::Rupiah($pesanan->bayar)}}</td>
+			                      </tr>
+			                      <tr>
+			                      	<td colspan="4" align="right"><strong>Kembalian : </strong> </td>
+			                        <td aign="left"> {{ Awa::Rupiah($pesanan->kembalian)}}</td>
 			                      </tr>
 	                  		</table>
 	                  		

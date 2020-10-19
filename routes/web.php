@@ -38,7 +38,9 @@ Route::group (['middleware' => 'auth'], function(){
 	 * Route Dashboard
 	 * 
 	 */
-	Route::resource('dashboard', 'DashboardController')->middleware('auth');
+	Route::get('dashboard/show','DashboardController@show')->name('dashboard.show');
+	Route::get('dashboard/data','DashboardController@data')->name('dashboard.data');
+	Route::resource('dashboard', 'DashboardController')->except(['show'])->middleware('auth');
 
 	//logout
 	Route::get('logout', 'Auth\AuthController@logout')->name('logout');
@@ -62,7 +64,7 @@ Route::group (['middleware' => 'auth'], function(){
 	Route::get('transaksi/data','TransaksiController@data')->name('transaksi.data');
 	Route::get('transaksi/print','TransaksiController@print')->name('transaksi.print');
 	Route::get('transaksi/{id}/destroy', 'TransaksiController@destroy')->name('transaksi.destroy');
-	Route::get('transaksi/confim','TransaksiController@confirm')->name('transaksi.confirm');
+	Route::post('transaksi/confim','TransaksiController@confirm')->name('transaksi.confirm');
 	Route::resource('transaksi','TransaksiController')->except(['destroy']);
 
 });

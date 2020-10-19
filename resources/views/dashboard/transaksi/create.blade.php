@@ -137,23 +137,29 @@
 			                          @endif
 		                        </tr>
 			                        <tr>
-			                        	<form action="{{ route('transaksi.confirm') }}" method="post">
-                                            @csrf
+			                        	
+
 				                        	<td colspan="3"> </td>
-				                        	<td><strong>Bayar : </strong></td>
-				                  			<td><input type="numeric" name="uang_bayar" class="{{$errors->has('bayar') ? 'is-invalid' : ' '}}" required></td>
-			                        		
+				                        	<td><strong>Bayar : </strong> </td>
+				                  			<td>
+				                  				<form action="{{ route('transaksi.confirm') }}" method="post">
+                                            		@csrf
+				                  					<input type="numeric" name="uang_bayar" class="{{$errors->has('bayar') ? 'is-invalid' : ' '}}" required>
+	                  								<button type="submit" class="btn btn-primary float-right">Confirm</button>
+			                        			</form>
+												
+				                  			</td>
+			                        			
 				                  			@if($errors->has('bayar'))
 				                  				<div class="invalid-feedback">
 				                  					{{$errors->first('bayar')}}
 				                  				</div>
 				                  			@endif 
 
-			                        	</form>
+
 			                        </tr>
 	                  		</table>
 
-	                  		<a href="{{route('transaksi.confirm')}}" class="btn btn-primary float-right">Confirm</a>
 	                  		
 	                    </div>
 

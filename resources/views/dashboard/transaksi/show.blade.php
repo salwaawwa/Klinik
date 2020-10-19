@@ -66,6 +66,14 @@
 	                          	<td> </td>
 	                          @endif
 	                      </tr>
+                        <tr>
+                          <td colspan="4" align="right"><strong>Bayar : </strong> </td>
+                          <td aign="left"> {{ Awa::Rupiah($pesanan->bayar)}}</td>
+                        </tr>
+                        <tr>
+                          <td colspan="4" align="right"><strong>Kembalian : </strong> </td>
+                          <td aign="left"> {{ Awa::Rupiah($pesanan->kembalian)}}</td>
+                        </tr>
               		</table>
 
               		 <div class="row">

@@ -48,6 +48,14 @@
                           <td align="center"><strong>Total Harga : </strong></td>
                           <td align="left">{{ Awa::Rupiah($pesanan->total_harga)}} </td>
                       </tr>
+                      <tr>
+                        <td colspan="4" align="right"><strong>Bayar : </strong> </td>
+                        <td aign="left"> {{ Awa::Rupiah($pesanan->bayar)}}</td>
+                      </tr>
+                      <tr>
+                        <td colspan="4" align="right"><strong>Kembalian : </strong> </td>
+                        <td aign="left"> {{ Awa::Rupiah($pesanan->kembalian)}}</td>
+                      </tr>
                 </tbody>
             </table>
             <div class="row">
