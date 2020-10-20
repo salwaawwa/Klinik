@@ -1,8 +1,11 @@
 <?php
 
 use Illuminate\Database\Seeder;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+=======
+>>>>>>> 2447f8dbd18c0dde2827652f38336847b70c8a68
 
 class UsersTableSeeder extends Seeder
 {
