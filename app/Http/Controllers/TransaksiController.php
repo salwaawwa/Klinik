@@ -164,7 +164,7 @@ class TransaksiController extends Controller
                     ]);
             }
 
-            return view('dashboard.transaksi.confirm',compact('pesanan','pesanan_details','kembalian'));
+            return view('dashboard.transaksi.confirm',compact('pesanan','pesanan_details'));
 
         }else{
             return redirect()->route('transaksi.create')->with('primary','Belum ada Pesanan');
