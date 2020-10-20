@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 /**
@@ -27,8 +27,8 @@ Route::group(['middleware' => 'guest'], function() {
     Route::get('login', 'Auth\AuthController@loginView')->name('login');
     Route::post('login', 'Auth\AuthController@login')->name('login');
     
-    Route::get('register', 'Auth\AuthController@registerView')->name('register');
-    Route::post('register', 'Auth\AuthController@register')->name('register');
+    // Route::get('register', 'Auth\AuthController@registerView')->name('register');
+    // Route::post('register', 'Auth\AuthController@register')->name('register');
 });
 
 Route::group (['middleware' => 'auth'], function(){
