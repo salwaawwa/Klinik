@@ -5,17 +5,17 @@
 	</head>
 	<body>
 		<div class="container">
-        <div class="card-body p-0">
+        <div class="card-body p-0 mt-5" style="border:solid; margin-right: 8em; margin-left: 8em; size:15cm,10cm;">
           <!-- Nested Row within Card Body -->
           <div class="p-5">
           @if(!empty($pesanan))
               <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-7">
                     <h4>KLINIK SPESIALIS UROLOGI</h4>
-                    <h6>dr. Ginanda Putra Siregar, SpU</h6>
+                    <h6>dr. Ginanda Putra Siregar, SpU (K)</h6>
                 </div>
-                <div class="col-md-6">
-                <p style="padding-left:190px;">Medan, {{$pesanan->tanggal}}<br>
+                <div class="col-md-5">
+                <p style="padding-left:40px;">Medan, {{$pesanan->tanggal}}<br>
                    Kepada Yth : <br>
                    No. Nota : {{$pesanan->nota}}
                 </p>
@@ -45,7 +45,7 @@
                   @endforeach
                       <tr>
                       	  <td colspan="3"> </td>
-                          <td align="center"><strong>Total Harga : </strong></td>
+                          <td align="right"><strong>Total Harga : </strong></td>
                           <td align="left">{{ Awa::Rupiah($pesanan->total_harga)}} </td>
                       </tr>
                       <tr>
@@ -62,9 +62,8 @@
               <div class="col-md-6">
               
               </div>
-              <div align="center" class="col-md-6 mt-3">
+              <div align="center" class="col-md-6 ">
                 <h6>Hormat Kami,</h6>
-                <br>
                 <br>
                 <br>
                 <p> {{ Auth::user()->name }}</p>
@@ -76,12 +75,12 @@
 	</div>
 
 
-	 <script type="text/javascript">
-            window.print();
-        </script>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+     window.print();
+  </script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
 	</body>
 </html>

@@ -5,57 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Produk;
-use DB;
+use App\PesananDetail;
 
 class DashboardController extends Controller
 {
     
 	public function index(){ 
-		// Request $request
-		// $dari = $request->dari;
-		// $sampai = $request->sampai;
-		// $data = DB::table('produks')
-		// ->whereBetween('created_at', [$dari, $sampai])
-		// ->selectRaw('sum(kas_masuk)')
-		// ->selectRaw('sum(profit)')
-		// ->selectRaw('id')
-		// ->groupBy('id')
-		// ->get();
 		return view('dashboard.dashboard.index');
 	}
 
-	// public function show(){ 
-
+	public function perhitungan($tglawal, $tglakhir){
 		
-
-	// 	return view('dashboard.index',compact('data'));
-	// }
-
-	// public function store(Request $request){
-	// 	\Validator::make($request->all(), [
- //            'dari'  => 'required|date',
- //            'sampai' => 'required|date'
- //        ])->validate();
-
- //        $data = Data::create($request->all());
-
- //        return redirect()->route('dashboard.index');
-
-	// }
-
-	// public function data(){
- //    	$data = Data::all();
-
- //        return DataTables::of($data)
- //                        ->addIndexColumn()
- //                        ->editColumn('bulan', function($item) {
- //                            $nama = $item->bulan.'<br>';
- //                            // $edit = '<a href="'. route('produk.edit', $item->slug).'">Edit</a> ';
- //                            // $delete = '<a href="javascript:void(0)" onclick="myConfirm('.$item->id.')">Delete</a> ';
- //                            return $nama;
- //                        })
- //                        ->escapeColumns([])
- //                        ->make(true);
- //    }
+		// dd(["Tanggal awal : ".$tglawal, 'Tanggal Akhirr :'.$tglakhir]);
+		$perhitungan = PesananDetail::with('produk')->whereBetween('created_at',[$tglawal, $tglakhir])->get();
+	
+		$proo = $perhitungan->sum('pro');
+		$kass = $perhitungan->sum('kas');
+		return view('dashboard.dashboard.perhitungan-perperiode',compact('perhitungan','proo','kass'));
+	}
 
 }

@@ -45,7 +45,7 @@ class TransaksiController extends Controller
     	$latest = Pesanan::latest()->first();
 
         if (! $latest || !$latest->nota) {
-           $nota = 'N00001';
+           $nota = 'N0001';
         }
         else{
             $string = preg_replace("/[^0-9\.]/", '', $latest->nota);
@@ -95,7 +95,7 @@ class TransaksiController extends Controller
 	            'pesanan_id' => $pesanan_baru->id,
 	            'banyak' => $request->banyak,
 	            'nota' =>  isset($transaksi) ? $transaksi->nota : $cek_pesanan->nota,
-	            'jumlah_harga' => $jumlah_harga,
+                'jumlah_harga' => $jumlah_harga,
 	        ]);
         } else{
             $pesanan_detail = PesananDetail::where('produk_id',$produk->id)->where('pesanan_id',$pesanan_baru->id)->first();
@@ -151,16 +151,26 @@ class TransaksiController extends Controller
             $pesanan->update();
 
             $pesanan_details = PesananDetail::where('pesanan_id',$pesanan_id)->get();
+            $profit = [];
             foreach($pesanan_details as $pesanan_detail)
             {
                 $produk = Produk::find($pesanan_detail->produk_id);
+                
+                $pesanan_detail->kas = $pesanan_detail->banyak * $produk->harga;
+                $pesanan_detail->pro = $pesanan_detail->kas - ($pesanan_detail->banyak * $produk->harga_beli);
+                array_push($profit, [
+                    'kas' => $pesanan_detail->kas,
+                    'pro' => $pesanan_detail->pro
+                ]);
+                $pesanan_detail->update();
+
                 $terjual = $produk->terjual + $pesanan_detail->banyak;
                 $kas_masuk = $produk->harga * $terjual;
-                $profit = $kas_masuk - ($produk->harga_beli * $terjual);
+                $proft = $kas_masuk - ($produk->harga_beli * $terjual);
                 $produk->update([
                         'terjual' => $terjual,
                         'kas_masuk' => $kas_masuk,
-                        'profit' => $profit
+                        'profit' => $proft
                     ]);
             }
 

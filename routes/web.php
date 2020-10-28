@@ -38,8 +38,7 @@ Route::group (['middleware' => 'auth'], function(){
 	 * Route Dashboard
 	 * 
 	 */
-	Route::get('dashboard/show','DashboardController@show')->name('dashboard.show');
-	Route::get('dashboard/data','DashboardController@data')->name('dashboard.data');
+	Route::get('perhitungan-perperiode/{tglawal}/{tglakhir}','DashboardController@perhitungan')->name('perhitungan-perperiode');
 	Route::resource('dashboard', 'DashboardController')->except(['show'])->middleware('auth');
 
 	//logout

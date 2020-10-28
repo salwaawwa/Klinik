@@ -15,7 +15,7 @@
                 <div class="row">
                   <div class="col-md-6">
                     <h5>KLINIK SPESIALIS UROLOGI</h5>
-                    <h6>dr. Ginanda Putra Siregar, SpU</h6>
+                    <h6>dr. Ginanda Putra Siregar, SpU (K)</h6>
                   </div>
 
                   <div class="col-md-6">
