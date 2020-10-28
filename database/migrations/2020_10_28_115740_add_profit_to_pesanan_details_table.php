@@ -14,8 +14,8 @@ class AddProfitToPesananDetailsTable extends Migration
     public function up()
     {
         Schema::table('pesanan_details', function (Blueprint $table) {
-            $table->string('kas')->nullable()->after('jumlah_harga');
-            $table->string('pro')->nullable()->after('kas');
+            $table->string('kas')->nullable()->after('banyak');
+            $table->string('pro')->nullable()->after('jumlah_harga');
         });
     }
 
