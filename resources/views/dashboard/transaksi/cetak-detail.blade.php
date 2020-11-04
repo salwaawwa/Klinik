@@ -5,7 +5,7 @@
 	</head>
 	<body>
 		<div class="container">
-        <div class="card-body p-0 mt-5" style="border:solid; margin-right: 1em; margin-left: 1em;">
+        <div class="card-body p-0 mt-5">
           <!-- Nested Row within Card Body -->
           <div class="p-5">
           @if(!empty($pesanan))
